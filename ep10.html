@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리얼로펌 10편 | 개인회생 vs 신용회복(워크아웃) 완벽 비교</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;700&display=swap');
+:root {
+  --primary:#0f2544; --accent:#d94f2b; --accent2:#f0a500;
+  --bg:#f2ede6; --card:#ffffff; --text:#1a1a2e;
+  --muted:#6b7280; --border:#ddd6cc; --green:#1a5c3a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);}
+
+/* TOP HEADER */
+.top-header{background:var(--primary);color:#fff;padding:24px 48px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:4px solid var(--accent);}
+.th-left .brand{font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.6;margin-bottom:6px;}
+.th-left h1{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;line-height:1.45;}
+.th-left .meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+/* 메타 5개 박스 — 밝은 배경 + 검은 글씨 + 크기 업 */
+.th-left .meta span{font-size:13px;font-weight:600;color:#1a1a2e;background:#f0e8d8;padding:5px 14px;border-radius:20px;letter-spacing:.3px;}
+.ep-badge{background:var(--accent);color:#fff;font-size:32px;font-weight:900;width:72px;height:72px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Noto Serif KR',serif;}
+
+/* TABS */
+.tab-nav{background:var(--primary);display:flex;padding:0 48px;gap:2px;border-bottom:1px solid rgba(255,255,255,.12);}
+.tab-btn{padding:13px 22px;font-size:13px;color:rgba(255,255,255,.5);cursor:pointer;border:none;background:none;font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid transparent;transition:all .2s;}
+.tab-btn.active{color:#fff;border-bottom-color:var(--accent2);}
+.tab-btn:hover{color:rgba(255,255,255,.85);}
+
+/* SECTIONS */
+.section{display:none;padding:36px 48px 80px;max-width:1140px;margin:0 auto;}
+.section.active{display:block;}
+/* STEP 문단제목 17px — 대표 촬영 현장 가독성 최우선 */
+.sec-title{
+  font-size:17px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:900;
+  margin-bottom:24px;
+  padding-bottom:14px;
+  border-bottom:2px solid var(--border);
+}
+
+/* PLAN CARDS */
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.plan-card{background:var(--card);border-radius:12px;padding:24px 26px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,.05);}
+.plan-card.full{grid-column:1/-1;}
+/* 소제목 card-label — 15px 명확하게 */
+.card-label{
+  font-size:15px;
+  letter-spacing:.5px;
+  color:var(--primary);
+  font-weight:800;
+  margin-bottom:14px;
+  padding-left:10px;
+  border-left:4px solid var(--accent);
+  line-height:1.4;
+}
+.plan-card h4{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--primary);margin-bottom:10px;}
+.plan-card p{font-size:15px;line-height:1.85;color:#444;}
+.plan-card ul{list-style:none;}
+.plan-card ul li{font-size:15px;line-height:1.9;color:#444;padding-left:20px;position:relative;}
+.plan-card ul li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:12px;top:5px;}
+.divider{height:1px;background:var(--border);margin:28px 0;}
+
+/* SERIES TIMELINE */
+.series-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:14px;}
+.series-cell{padding:16px 18px;border-right:1px solid var(--border);}
+.series-cell:last-child{border-right:none;}
+.series-cell.current{background:var(--primary);}
+.wk{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.series-cell.current .wk{color:rgba(255,255,255,.65);}
+.wtitle{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:4px;}
+.series-cell.current .wtitle{color:#fff;}
+.wsub{font-size:14px;color:var(--muted);}
+.series-cell.current .wsub{color:rgba(255,255,255,.7);}
+
+/* COMPETITION TABLE */
+.comp-wrap{overflow-x:auto;margin-top:14px;}
+.comp-table{width:100%;border-collapse:collapse;font-size:15px;min-width:700px;}
+/* th text-align: center */
+.comp-table th{background:var(--primary);color:#fff;padding:12px 14px;text-align:center;font-size:13px;letter-spacing:1px;font-weight:700;}
+.comp-table td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.7;}
+.comp-table tr:nth-child(even) td{background:#faf8f4;}
+.row-label{font-weight:700;color:var(--primary);font-size:14px;}
+.views{font-weight:900;color:var(--accent);}
+.insight-box{background:#fff8ee;border-left:4px solid var(--accent2);border-radius:0 8px 8px 0;padding:16px 20px;margin-top:14px;font-size:15px;line-height:1.85;color:#444;}
+.insight-box strong{color:var(--primary);}
+
+/* STRATEGY */
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:14px;}
+.st-card{padding:20px;border-radius:10px;}
+.st-card.take{background:#e8f4ea;border-top:3px solid #2e7d52;}
+.st-card.diff{background:#fef0e8;border-top:3px solid var(--accent);}
+.st-card.pos{background:#e8edf8;border-top:3px solid var(--primary);}
+.st-card h5{font-size:14px;letter-spacing:.5px;margin-bottom:12px;font-weight:800;}
+.st-card.take h5{color:#2e7d52;}
+.st-card.diff h5{color:var(--accent);}
+.st-card.pos h5{color:var(--primary);}
+.st-card ul{list-style:none;}
+.st-card ul li{font-size:15px;line-height:1.8;color:#444;padding-left:16px;position:relative;}
+.st-card ul li::before{content:'·';position:absolute;left:0;font-weight:900;}
+
+/* INSIGHT GRID */
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;}
+.ins-card{background:var(--card);border-radius:10px;padding:20px 22px;border:1px solid var(--border);}
+.ins-card h5{font-size:15px;font-weight:800;color:var(--primary);margin-bottom:12px;}
+.ins-card ul{list-style:none;}
+.ins-card ul li{font-size:15px;line-height:1.8;color:#444;padding-left:18px;position:relative;}
+.ins-card ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:12px;}
+
+/* SLIDE CONTROLS */
+.slide-controls{background:var(--card);border-radius:12px;padding:16px 24px;margin-bottom:24px;border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.sc-left{display:flex;flex-direction:column;gap:4px;}
+.sc-counter{font-size:13px;color:var(--muted);}
+.sc-counter strong{font-size:22px;color:var(--primary);font-weight:900;}
+.sc-part{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;}
+.sc-dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;}
+.sc-dot{width:9px;height:9px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s;}
+.sc-dot.active{background:var(--accent);transform:scale(1.5);}
+.sc-nav{display:flex;gap:8px;}
+.sc-btn{padding:9px 24px;border-radius:8px;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;transition:all .2s;}
+.sc-btn.prev{background:var(--bg);color:var(--primary);border:1px solid var(--border);}
+.sc-btn.next{background:var(--accent);color:#fff;}
+.sc-btn:hover{opacity:.85;}
+.sc-btn:disabled{opacity:.3;cursor:not-allowed;}
+
+/* SLIDES */
+.slide{display:none;animation:fadeUp .25s ease;}
+.slide.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.slide-card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,.12);border:1px solid var(--border);}
+
+/* SLIDE HEADER */
+.s-head{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;}
+.s-head.intro{background:#0f2544;}
+.s-head.body{background:#1a3a5c;}
+.s-head.close{background:#3d1f5e;}
+.s-head-left{display:flex;align-items:center;gap:16px;}
+.s-num{font-size:13px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.55);}
+.s-part-tag{font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:700;padding:4px 14px;border-radius:20px;background:rgba(255,255,255,.18);color:#fff;}
+/* s-head-title — 촬영현장 핵심 안내 강조: 크고 밝게 */
+.s-head-title{
+  font-family:'Noto Serif KR',serif;
+  font-size:20px;
+  color:#fff;
+  font-weight:700;
+  background:rgba(255,255,255,.12);
+  padding:6px 18px;
+  border-radius:8px;
+  letter-spacing:.3px;
+  border-left:3px solid var(--accent2);
+}
+.s-time{font-size:13px;color:rgba(255,255,255,.5);}
+
+/* SLIDE BODY - 3 COLUMNS */
+.s-body{display:grid;grid-template-columns:1fr 2.2fr 1fr;min-height:340px;}
+.s-col{padding:28px 26px;}
+.s-col+.s-col{border-left:1px solid var(--border);}
+.col-q{background:#fafaf8;}
+.col-a{background:#ffffff;}
+.col-sub{background:#faf8f4;}
+/* col-label 13px */
+.col-label{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:6px;}
+.q-text{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:700;color:var(--primary);line-height:1.55;word-break:keep-all;}
+/* a-text 본문 16px — 가독성 최우선 */
+.a-text{font-size:16px;line-height:1.95;color:#222;word-break:keep-all;}
+.a-text strong{color:var(--primary);font-weight:700;}
+.a-text .hl{color:var(--accent);font-weight:700;}
+.a-text .pt-box{background:#f0f4ff;border-left:3px solid var(--primary);border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0;font-size:15px;line-height:1.85;}
+.a-text .cmp-row{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap;}
+.a-text .ci{flex:1;min-width:130px;padding:13px 15px;border-radius:8px;font-size:14.5px;line-height:1.65;}
+.a-text .ci.blue{background:#e8edf8;color:#1a2d5a;border-top:2px solid #1a2d5a;}
+.a-text .ci.red{background:#fdeaea;color:#a32020;border-top:2px solid var(--accent);}
+.ci-lbl{font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:5px;}
+.ci-val{font-size:15px;font-weight:700;line-height:1.5;}
+.sub-tag{display:inline-block;background:var(--primary);color:#fff;font-size:14px;font-weight:700;padding:9px 16px;border-radius:8px;margin-bottom:12px;line-height:1.4;word-break:keep-all;}
+.kw-list{display:flex;flex-direction:column;gap:7px;margin-top:12px;}
+.kw-item{font-size:14px;padding:7px 12px;border-radius:6px;background:#f0f4ff;color:var(--primary);font-weight:500;}
+.sub-note{font-size:14px;color:var(--muted);line-height:1.75;margin-top:12px;border-top:1px solid var(--border);padding-top:12px;}
+.s-foot{background:#f9f7f4;border-top:1px solid var(--border);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;}
+.s-foot .timing{font-size:13px;color:var(--muted);}
+.s-foot .tip{font-size:13.5px;color:var(--accent);font-weight:700;background:#fff3ee;padding:5px 14px;border-radius:20px;}
+
+/* SEO/TITLE SECTION */
+.sum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;}
+.sum-card{background:var(--card);border-radius:12px;padding:22px;border:1px solid var(--border);border-top:3px solid var(--accent);}
+/* sum-lbl 채도 높여 가독성 강화 */
+.sum-lbl{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.5px;}
+.sum-val{font-size:24px;font-weight:900;color:var(--primary);}
+.sum-sub{font-size:14px;color:#555;margin-top:6px;font-weight:500;}
+.code-block{background:#1a1a2e;border-radius:12px;padding:24px;color:#e8e8f0;font-family:monospace;font-size:13px;line-height:1.8;overflow-x:auto;margin-top:20px;}
+.ht{color:#79c0ff;} .ha{color:#d2a8ff;} .hv{color:#a5d6ff;} .hc{color:#8b949e;}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+  <div class="th-left">
+    <div class="brand">리얼로펌 유튜브 원고 시스템</div>
+    <h1>개인회생 vs 신용회복(워크아웃)<br>— 실제 결과로 비교합니다</h1>
+    <div class="meta">
+      <span>📅 2026. 04</span><span>🎬 제10편</span><span>⏱ 6~7분</span>
+      <span>📁 개인회생·파산 시리즈</span><span>🎯 전문성형 + 전환형</span>
+    </div>
+  </div>
+  <div class="ep-badge">10</div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('plan',this)">📄 기획서</button>
+  <button class="tab-btn" onclick="showTab('html',this)">🔖 제목 · 구성 · SEO · 키워드</button>
+  <button class="tab-btn" onclick="showTab('script',this)">📺 대본 슬라이드</button>
+</div>
+
+<!-- ============================= 기획서 ============================= -->
+<div class="section active" id="section-plan">
+
+  <div class="sec-title">STEP 1 · 4주 시리즈 기획 — 회생 의사결정 시리즈</div>
+  <div class="plan-card full">
+    <div class="series-row">
+      <div class="series-cell"><div class="wk">1주차 (완료)</div><div class="wtitle">2026년 개인회생 절차</div><div class="wsub">8편</div></div>
+      <div class="series-cell"><div class="wk">2주차 (완료)</div><div class="wtitle">개인파산 입문·총정리</div><div class="wsub">9편</div></div>
+      <div class="series-cell current"><div class="wk">3주차 ← 이번 영상</div><div class="wtitle">회생 vs 신용회복 비교</div><div class="wsub">10편 · 선택 갈등 콘텐츠</div></div>
+      <div class="series-cell"><div class="wk">4주차 (예정)</div><div class="wtitle">개인회생, 지금 신청해야 하는 사람은 따로 있습니다</div><div class="wsub">11편 · 전환형 | 상담 유도</div></div>
+    </div>
+    <p style="margin-top:14px;font-size:15px;color:var(--muted);">흐름: "어떻게 하나?" → <strong style="color:var(--accent);">"뭐가 맞나? (이번)"</strong> → "지금 당장 신청해야 하는 사람은?"</p>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title">STEP 2 · 제작 배경</div>
+  <div class="plan-grid">
+    <div class="plan-card">
+      <div class="card-label">왜 지금 이 주제인가</div>
+      <ul>
+        <li>연체 시작 → "워크아웃 vs 회생" 검색 급증</li>
+        <li>새출발기금 등 정부 정책 혼선 → 채무자 혼란</li>
+        <li>상담 1위 질문: "회생이랑 신용회복 뭐가 더 좋아요?"</li>
+        <li>경쟁 채널 최상위 조회수(29만, 12만) = 이 주제</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <div class="card-label">타겟 시청자</div>
+      <ul>
+        <li>연체 30~90일 구간, 추심 시작 전후</li>
+        <li>"버틸까 vs 제도 들어갈까" 고민하는 30~50대</li>
+        <li>워크아웃 신청 전 정보 탐색 중인 사람</li>
+        <li>회생 신청 전 마지막으로 비교 확인하는 사람</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title">STEP 3 · 경쟁 영상 분석표</div>
+  <div class="plan-card full">
+    <div class="comp-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr><th>항목</th><th>① 이서영 변호사</th><th>② 박시형 변호사</th><th>③ 김민수 (기사회생TV)</th><th>④ 이승진 (회생의 기적)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-label">채널명</td><td>이서영 변호사</td><td>다시 박시형입니다</td><td>기사회생TV 김앤파트너스</td><td>회생의 기적 이승진변호사</td></tr>
+          <tr><td class="row-label">조회수</td><td class="views">85,574회</td><td class="views">121,939회</td><td class="views">296,543회</td><td class="views">32,453회</td></tr>
+          <tr><td class="row-label">영상<br>제목</td><td>개인회생과 신용회복 비교중이신 분들은 필수시청</td><td>개인회생 하지마세요 워크아웃하세요</td><td>신용회복위원회 워크아웃 장점 5가지</td><td>워크아웃이 유리한 경우 솔직하게</td></tr>
+          <tr><td class="row-label">콘텐츠 특징</td><td>대화형 설명. 구어체 자연스러움</td><td>강한 제목 훅. 병용 전략 반전 공개</td><td>장점 5가지 넘버링. 구체적 수치</td><td>입장 변화 고백. 솔직함 강조</td></tr>
+          <tr><td class="row-label">주요<br>내용</td><td>워크아웃은 상환기간 연장 제도. 80%는 회생 적합</td><td>두 절차 병용 전략. 회생↔워크아웃 전환 케이스</td><td>비용 저렴, 독촉 즉시 중단, 배우자 재산 유연</td><td>100% 변제 상황, 부양가족 많은 경우 워크아웃 유리</td></tr>
+          <tr><td class="row-label">핵심<br>강점</td><td>친근한 대화체. 채널 신뢰도</td><td><strong>"하지마세요" 훅으로 CTR 극대화</strong></td><td><strong>29만뷰 — 장점 5가지 명확한 구조</strong></td><td>솔직한 입장 변화 → 신뢰 구축</td></tr>
+          <tr><td class="row-label">약점</td><td>결론 약함. 선택 기준 불명확</td><td>구조 복잡. 초심자 따라가기 어려움</td><td>단점 설명 부족. 균형감 아쉬움</td><td>분량 짧고 핵심 비교표 없음</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box"><strong>📊 핵심 인사이트:</strong> 29만뷰(김민수)와 12만뷰(박시형)의 공통점 → <strong>"단순 설명이 아닌 선택 갈등을 건드리는 구조"</strong>. "하지마세요" 훅, 장점 5가지 넘버링, 입장 반전이 클릭율과 시청완료율을 높인다.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title">STEP 4 · 우리 채널 전략</div>
+  <div class="plan-card full">
+    <div class="strategy-grid">
+      <div class="st-card take">
+        <h5>✅ 가져갈 것</h5>
+        <ul>
+          <li>회생 vs 신용회복 비교 구조</li>
+          <li>강한 질문형 오프닝 — 시청자 갈등 자극</li>
+          <li>구체적 수치 (3년 vs 8년, 월납 비교)</li>
+          <li>"하지마세요" 제목 훅 전략 (박시형)</li>
+          <li>"입장 변화 고백" 신뢰 구조 (이승진)</li>
+        </ul>
+      </div>
+      <div class="st-card diff">
+        <h5>🔥 차별화할 것</h5>
+        <ul>
+          <li>단순 장단점 X → 실제 상담 케이스 2개</li>
+          <li>경쟁사: 제도 설명 → 우리: 인생 결과 비교</li>
+          <li>워크아웃 장점만 X → 실패 케이스 포함</li>
+          <li>"어느 게 낫냐"가 아닌 "당신 상황은 어디냐"</li>
+          <li>월납 vs 총납부액 역전 포인트 강조</li>
+        </ul>
+      </div>
+      <div class="st-card pos">
+        <h5>🎯 포지셔닝</h5>
+        <ul>
+          <li><strong>"선택을 같이 계산해주는 변호사"</strong></li>
+          <li>회생만 권하지 않는다 = 신뢰 시그널</li>
+          <li>부산 대표 "리얼 케이스 채널"</li>
+          <li>법률 정보 X → 삶의 결과를 먼저 말한다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-title">STEP 5 · 참고 영상 스크립트 분석 & 인사이트</div>
+  <div class="plan-card full">
+    <div class="insight-grid">
+      <div class="ins-card">
+        <h5>🔥 조회수 터지는 구조 패턴</h5>
+        <ul>
+          <li>오프닝 0~10초: 결론 역설 or 반전 훅</li>
+          <li>선택 갈등 유도: "뭐가 더 좋냐" 직접 대응</li>
+          <li>기존 상식 뒤집기: "하지마세요" 등 반전</li>
+          <li>구체적 숫자: 3년/8년, 50%/전액, 월납 비교</li>
+          <li>케이스 삽입: "제가 상담한 케이스인데요"</li>
+          <li>마지막 정리 + 부드러운 상담 유도 CTA</li>
+        </ul>
+      </div>
+      <div class="ins-card">
+        <h5>💬 시청자 반응 좋은 표현 추출</h5>
+        <ul>
+          <li>"상담의 80%는 회생이 더 적합합니다" (이서영)</li>
+          <li>"두 가지를 함께 써야 하는 경우가 있어요" (박시형)</li>
+          <li>"입장이 바뀌었습니다, 솔직하게 말씀드리면" (이승진)</li>
+          <li>"8년 vs 3년, 인생에서 얼마나 긴 시간인가요" (이승진)</li>
+          <li>"탕감이 목적이라면 워크아웃은 맞지 않아요" (이서영)</li>
+        </ul>
+      </div>
+      <div class="ins-card">
+        <h5>📌 우리 채널 적용 인사이트</h5>
+        <ul>
+          <li>핵심 트리거: "대부분 틀립니다", "이게 더 유리합니다"</li>
+          <li>월 소득 250만원 기준 실제 계산 비교 삽입</li>
+          <li>자막: 3년 vs 8년 타임라인 시각화 강력 권장</li>
+          <li>신뢰 구조: "저도 워크아웃 권할 때 있습니다" 먼저</li>
+        </ul>
+      </div>
+      <div class="ins-card">
+        <h5>⚠️ 경쟁사 실수 — 우리가 피해야 할 것</h5>
+        <ul>
+          <li>결론 없는 비교 → 시청자 더 혼란 유발</li>
+          <li>워크아웃 단점 빠뜨리면 신뢰 하락</li>
+          <li>법률 용어 나열(별제권, 청산가치) — 쉬운 말로</li>
+          <li>상담 CTA 너무 강하면 오히려 역효과</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= 대본 ============================= -->
+<div class="section" id="section-script">
+
+  <div class="slide-controls">
+    <div class="sc-left">
+      <div class="sc-counter">슬라이드 <strong id="cur-num">1</strong> / 8</div>
+      <div class="sc-part" id="cur-part">인트로</div>
+    </div>
+    <div class="sc-dots" id="dot-container"></div>
+    <div class="sc-nav">
+      <button class="sc-btn prev" id="btn-prev" onclick="moveSlide(-1)" disabled>◀ 이전</button>
+      <button class="sc-btn next" id="btn-next" onclick="moveSlide(1)">다음 ▶</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 1 -->
+  <div class="slide active" data-part="인트로 1 — 훅">
+    <div class="slide-card">
+      <div class="s-head intro">
+        <div class="s-head-left"><span class="s-num">SLIDE 01</span><span class="s-part-tag">인트로</span><span class="s-head-title">훅 — 선택 갈등 자극</span></div>
+        <span class="s-time">0:00 ~ 0:30</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"변호사님, 개인회생이랑 신용회복 워크아웃… 솔직히 뭐가 더 좋은 건가요?"</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            이 질문, 저 정말 많이 받습니다.<br><br>
+            많은 분들이 <strong>"이게 더 좋다"는 답</strong>을 원하시는데요.<br><br>
+            오늘 솔직하게 말씀드리겠습니다.<br><br>
+            저는 <span class="hl">워크아웃이 더 맞는 분께는 워크아웃을 권합니다.</span><br>
+            그리고 <strong>회생이 맞는 분께는 반드시 회생을 권하고요.</strong><br><br>
+            문제는, 이 두 제도가<br>
+            <span class="hl">선택에 따라 인생 결과가 완전히 달라진다</span>는 겁니다.<br><br>
+            오늘 영상 끝까지 보시면,<br>
+            <strong>본인이 어디에 해당하는지 바로 아실 수 있습니다.</strong>
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">선택 = 인생 결과</div>
+          <div class="kw-list">
+            <div class="kw-item">개인회생 vs 워크아웃</div>
+            <div class="kw-item">신용회복위원회</div>
+            <div class="kw-item">채무조정 비교</div>
+          </div>
+          <div class="sub-note">✎ "저도 워크아웃 권합니다" 선언으로 신뢰 먼저 구축 후 비교 진입</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 30초</span><span class="tip">🎬 카메라: 정면, 약간 미소</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide" data-part="인트로 2 — 예고">
+    <div class="slide-card">
+      <div class="s-head intro">
+        <div class="s-head-left"><span class="s-num">SLIDE 02</span><span class="s-part-tag">인트로</span><span class="s-head-title">오늘 영상 예고</span></div>
+        <span class="s-time">0:30 ~ 1:00</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"그럼 오늘 어떤 내용을 다루실 건가요?"</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            오늘은 단순 비교가 아니라,<br>
+            <strong>실제 결과 기준으로 딱 3가지</strong>를 말씀드리겠습니다.<br><br>
+            <div class="pt-box">
+              <strong>첫째,</strong> 구조 차이 — 탕감 vs 상환기간 연장<br>
+              <strong>둘째,</strong> 기간과 월납 — 3년 vs 8~10년의 현실<br>
+              <strong>셋째,</strong> 내가 어디에 해당하는가 — 결정 기준
+            </div>
+            많은 분들이 <span class="hl">"두 개 다 비슷한 거 아니에요?"</span>라고 하시는데요.<br><br>
+            이 영상 보시고 나면, <strong>완전히 다른 제도</strong>라는 걸 아시게 됩니다.
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">3가지로 정리</div>
+          <div class="kw-list">
+            <div class="kw-item">탕감 구조 차이</div>
+            <div class="kw-item">3년 vs 8년</div>
+            <div class="kw-item">내 상황 기준</div>
+          </div>
+          <div class="sub-note">✎ 화면: 3가지 항목 텍스트 순차 등장 권장</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 35초</span><span class="tip">📌 자막: 번호 항목 크게 표시</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide" data-part="본론 1 — 구조 차이">
+    <div class="slide-card">
+      <div class="s-head body">
+        <div class="s-head-left"><span class="s-num">SLIDE 03</span><span class="s-part-tag">본론 1</span><span class="s-head-title">가장 큰 차이 — 탕감이냐, 연장이냐</span></div>
+        <span class="s-time">1:00 ~ 2:00</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"두 제도, 가장 큰 차이가 뭔가요? 핵심만 말씀해 주세요."</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            딱 한 줄로 정리하면 이겁니다.<br><br>
+            <div class="cmp-row">
+              <div class="ci blue"><div class="ci-lbl">개인회생</div><div class="ci-val">빚 일부만 갚고<br>→ 나머지 법원이 면책</div></div>
+              <div class="ci red"><div class="ci-lbl">신용회복 워크아웃</div><div class="ci-val">빚 전액 갚되<br>→ 기간을 8~10년으로 늘려줌</div></div>
+            </div>
+            예를 들어 빚이 <strong>1억</strong>이면,<br><br>
+            개인회생은 → 소득에서 생계비 빼고 남은 돈<br>
+            <span class="hl">36개월만 납부하면 나머지는 면책.</span><br><br>
+            워크아웃은 → 그 1억을<br>
+            <span class="hl">8년~10년에 걸쳐 전부 갚는 구조.</span><br><br>
+            이자 일부를 줄여주는 건 있지만, 원금 탕감은 거의 없습니다.<br><br>
+            <strong>탕감이 목적이라면, 워크아웃은 맞지 않습니다.</strong>
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">회생 = 탕감<br>워크아웃 = 연장</div>
+          <div class="kw-list">
+            <div class="kw-item">면책 = 나머지 소멸</div>
+            <div class="kw-item">원금 탕감 거의 없음</div>
+          </div>
+          <div class="sub-note">✎ 화면: 1억 → 회생 vs 1억 → 워크아웃 비교 그래픽 삽입 강력 권장</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 55초</span><span class="tip">📊 그래픽: 두 갈래 비교표</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide" data-part="본론 2 — 기간·월납 역전">
+    <div class="slide-card">
+      <div class="s-head body">
+        <div class="s-head-left"><span class="s-num">SLIDE 04</span><span class="s-part-tag">본론 2</span><span class="s-head-title">3년 vs 8년 — 월납보다 총납부액이 중요하다</span></div>
+        <span class="s-time">2:00 ~ 3:10</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"기간을 늘려주면 월 납부 부담이 더 적은 거잖아요. 그럼 워크아웃이 더 편한 거 아닌가요?"</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            여기서 많은 분들이 착각하십니다.<br><br>
+            실제로 제가 상담에서 계산해 드린 케이스를 말씀드릴게요.<br>
+            <strong>월 소득 250만원, 빚 5천만원</strong> 기준으로 비교하면,<br><br>
+            <div class="cmp-row">
+              <div class="ci blue"><div class="ci-lbl">개인회생 (3년)</div><div class="ci-val">월 약 90만원 × 36개월<br>→ 총 3,240만원 납부<br>→ 나머지 1,760만원 면책</div></div>
+              <div class="ci red"><div class="ci-lbl">워크아웃 (8년)</div><div class="ci-val">월 약 52만원 × 96개월<br>→ 총 5,000만원 납부<br>→ 탕감 거의 없음</div></div>
+            </div>
+            월 납부는 워크아웃이 적게 느껴지지만,<br>
+            <span class="hl">총납부액은 워크아웃이 훨씬 많습니다.</span><br><br>
+            그리고 <strong>8년 동안 중간에 무너지면</strong> —<br>
+            워크아웃은 다시 원점으로 돌아갑니다.<br><br>
+            제가 직접 상담해보면, 워크아웃 하다가 중간 포기하고 오시는 분들이 꽤 있어요.
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">3년 집중 끝<br>vs<br>8년 버티기</div>
+          <div class="kw-list">
+            <div class="kw-item">총납부액 역전</div>
+            <div class="kw-item">중간 포기 → 원점</div>
+          </div>
+          <div class="sub-note">✎ 화면: 3년 타임라인 vs 8년 타임라인 시각화 강력 권장</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 65초</span><span class="tip">💡 핵심: 총납부액 역전 포인트 강조</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide" data-part="본론 3 — 워크아웃 유리한 경우">
+    <div class="slide-card">
+      <div class="s-head body">
+        <div class="s-head-left"><span class="s-num">SLIDE 05</span><span class="s-part-tag">본론 3</span><span class="s-head-title">그렇다면 워크아웃이 더 유리한 경우는?</span></div>
+        <span class="s-time">3:10 ~ 4:10</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"그럼 무조건 회생이 낫다는 건가요? 워크아웃이 더 좋은 경우는 없나요?"</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            아닙니다. 저도 워크아웃을 권하는 경우가 분명히 있습니다.<br><br>
+            <div class="pt-box">
+              <strong>① 소득이 높고 탕감 금액이 크지 않은 경우</strong><br>
+              월 소득 400만원이면 회생 월 납부액이 오히려 더 많을 수 있어요.<br><br>
+              <strong>② 배우자 재산이 많은 경우</strong><br>
+              법원은 배우자 재산 절반을 내 자산으로 계산하는 경향이 있어요.<br>
+              워크아웃은 더 유연하게 봅니다.<br><br>
+              <strong>③ 월 생활비가 절대적으로 중요한 경우</strong><br>
+              자녀 여럿, 부모 부양 — 회생 생계비 기준이 너무 빠듯하다면<br>
+              워크아웃의 더 넓은 인정 범위가 숨통을 틔워줄 수 있습니다.
+            </div>
+            그래서 저는 상담에서 반드시 두 가지를 다 계산해 드립니다.<br>
+            <span class="hl">숫자를 보고 나서 선택하는 게 맞습니다.</span>
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">워크아웃 유리<br>3가지 상황</div>
+          <div class="kw-list">
+            <div class="kw-item">고소득자</div>
+            <div class="kw-item">배우자 재산 많은 경우</div>
+            <div class="kw-item">부양가족 많은 경우</div>
+          </div>
+          <div class="sub-note">✎ "저도 워크아웃 권합니다" → 공정한 채널 신뢰 극대화</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 60초</span><span class="tip">🎯 전략: 공정한 비교 포지셔닝</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide" data-part="본론 4 — 내 상황 결정 기준">
+    <div class="slide-card">
+      <div class="s-head body">
+        <div class="s-head-left"><span class="s-num">SLIDE 06</span><span class="s-part-tag">본론 4</span><span class="s-head-title">내 상황 — 어디에 해당하는가</span></div>
+        <span class="s-time">4:10 ~ 5:10</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"지금 고민하시는 분들, 어떤 기준으로 판단하면 될까요?"</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            제가 상담 현장에서 쓰는 기준 딱 세 가지입니다.<br><br>
+            <div class="pt-box">
+              <strong>✅ 개인회생을 먼저 검토할 상황</strong><br>
+              · 이미 연체 시작, 돌려막기 상태<br>
+              · 소득은 있지만 갚을 여력이 없다<br>
+              · 빠르게 끝내고 새 출발하고 싶다<br><br>
+              <strong>✅ 워크아웃을 먼저 검토할 상황</strong><br>
+              · 소득이 안정적이고 비교적 높다<br>
+              · 배우자 재산이 많다<br>
+              · 연체 90일이 넘었고, 금융권 채무만 있다
+            </div>
+            그리고 반드시 아셔야 할 게 있어요.<br><br>
+            워크아웃은 <span class="hl">연체 90일이 지나야 신청 가능</span>합니다.<br>
+            개인회생은 <strong>연체 없이도 신청할 수 있어요.</strong><br><br>
+            <span class="hl">타이밍을 놓치면 선택지가 줄어듭니다.</span>
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">타이밍이 핵심</div>
+          <div class="kw-list">
+            <div class="kw-item">워크아웃: 연체 90일 조건</div>
+            <div class="kw-item">회생: 연체 전 신청 가능</div>
+          </div>
+          <div class="sub-note">✎ 화면: 체크리스트 두 박스로 분리 표시 권장</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 60초</span><span class="tip">📋 자막: 체크리스트 형태 강력 권장</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide" data-part="본론 5 — 리얼 케이스">
+    <div class="slide-card">
+      <div class="s-head body">
+        <div class="s-head-left"><span class="s-num">SLIDE 07</span><span class="s-part-tag">본론 5</span><span class="s-head-title">리얼 케이스 — 잘못된 선택의 결과</span></div>
+        <span class="s-time">5:10 ~ 5:50</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"실제로 잘못된 선택을 하셨던 케이스가 있으신가요?"</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            네, 있습니다. 제가 직접 상담했던 케이스인데요.<br><br>
+            40대 자영업자 분이셨어요.<br>
+            빚이 <strong>3천만원</strong>이었는데, 주변에서 "워크아웃이 더 간단하다"는 말을 듣고 신청하셨습니다.<br><br>
+            <span class="hl">8년 납부 중 4년이 지났을 때 사업이 다시 어려워졌어요.</span><br>
+            중간 포기 → 다시 연체 → 결국 더 힘든 상황이 됐습니다.<br><br>
+            반면, 비슷한 상황에서 개인회생을 선택하신 분은<br>
+            <strong>3년 후 깨끗하게 면책을 받고 새 출발을 하셨습니다.</strong><br><br>
+            어떤 제도가 더 좋냐의 문제가 아닙니다.<br>
+            <span class="hl">내 상황에 맞는 제도를 선택해야 합니다.</span>
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">잘못된 선택<br>= 더 긴 고통</div>
+          <div class="kw-list">
+            <div class="kw-item">중간 포기 → 원점</div>
+            <div class="kw-item">3년 후 새 출발</div>
+          </div>
+          <div class="sub-note">✎ 케이스는 익명 합성 또는 실제 익명 케이스 활용</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 50초</span><span class="tip">💬 공감 먼저 → 케이스 → 결론</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide" data-part="마무리 — 정리 + CTA">
+    <div class="slide-card">
+      <div class="s-head close">
+        <div class="s-head-left"><span class="s-num">SLIDE 08</span><span class="s-part-tag">마무리</span><span class="s-head-title">정리 + 상담 유도</span></div>
+        <span class="s-time">5:50 ~ 6:30</span>
+      </div>
+      <div class="s-body">
+        <div class="s-col col-q">
+          <div class="col-label">🎙 PD 질문</div>
+          <div class="q-text">"오늘 내용, 마지막으로 정리해 주신다면요?"</div>
+        </div>
+        <div class="s-col col-a">
+          <div class="col-label">💬 대표 설명</div>
+          <div class="a-text">
+            오늘 정리 딱 세 줄로 해드리겠습니다.<br><br>
+            <div class="pt-box">
+              <strong>1.</strong> 개인회생 = 일부만 갚고 나머지 탕감<br>
+              <strong>2.</strong> 워크아웃 = 전액 갚되 기간을 늘려줌<br>
+              <strong>3.</strong> 어떤 제도가 더 좋냐가 아니라, <span class="hl">내 상황에 맞는 걸 선택해야 한다</span>
+            </div>
+            많은 분들이 혼자 검색해서 결정하시다가<br>
+            잘못된 선택으로 더 힘들어지는 경우를 많이 봤습니다.<br><br>
+            <strong>두 제도를 함께 계산해서 비교해 드리는 것,</strong><br>
+            그게 저희가 하는 일입니다.<br><br>
+            궁금하신 분들, 부담 없이 연락 주세요.<br>
+            <span class="hl">리얼로펌은 회생이든 워크아웃이든 여러분 편입니다.</span>
+          </div>
+        </div>
+        <div class="s-col col-sub">
+          <div class="col-label">📌 자막</div>
+          <div class="sub-tag">내 상황이 기준</div>
+          <div class="kw-list">
+            <div class="kw-item">리얼로펌 무료 상담</div>
+            <div class="kw-item">구독 + 좋아요</div>
+          </div>
+          <div class="sub-note">✎ 화면 하단: 전화번호 / 상담 링크 자막 삽입<br>✎ 아웃트로: 부드럽게 마무리</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="timing">⏱ 약 45초</span><span class="tip">📞 CTA: 부드럽게, 압박 없이</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================= 웹 발행본 ============================= -->
+<div class="section" id="section-html">
+  <div class="sec-title">🔖 제목 · 구성 · SEO · 키워드</div>
+
+  <div class="sum-grid">
+    <div class="sum-card"><div class="sum-lbl">총 슬라이드</div><div class="sum-val">8장</div><div class="sum-sub">인트로 2 · 본론 5 · 마무리 1</div></div>
+    <div class="sum-card"><div class="sum-lbl">예상 영상 길이</div><div class="sum-val">6~7분</div><div class="sum-sub">롱폼 전문성형</div></div>
+    <div class="sum-card"><div class="sum-lbl">핵심 키워드</div><div class="sum-val">비교형</div><div class="sum-sub">개인회생 vs 워크아웃</div></div>
+    <div class="sum-card"><div class="sum-lbl">콘텐츠 유형</div><div class="sum-val">전환형</div><div class="sum-sub">선택 갈등 → 상담 유도</div></div>
+  </div>
+
+  <div class="plan-card full">
+    <div class="card-label">📋 썸네일 &amp; 제목 후보</div>
+    <table class="comp-table" style="margin-top:10px;">
+      <thead><tr><th style="text-align:center;">구분</th><th style="text-align:center;">안</th><th style="text-align:center;">전략 포인트</th></tr></thead>
+      <tbody>
+        <tr><td class="row-label">제목 1안 ★추천</td><td><strong>개인회생 vs 신용회복, 잘못 고르면 8년을 잃습니다</strong></td><td>손실 회피 심리 자극, 기간 구체화</td></tr>
+        <tr><td class="row-label">제목 2안</td><td><strong>개인회생 하지 마세요 — 이 경우엔 워크아웃이 더 낫습니다</strong></td><td>박시형 12만뷰 훅 구조 응용</td></tr>
+        <tr><td class="row-label">제목 3안</td><td><strong>회생 vs 워크아웃, 변호사가 직접 계산해 드립니다</strong></td><td>전문성 + 서비스 강조</td></tr>
+        <tr><td class="row-label">썸네일 1안 ★추천</td><td>"잘못 고르면 8년 낭비" + 변호사 정면 컷</td><td>손실 강조 + 신뢰 얼굴</td></tr>
+        <tr><td class="row-label">썸네일 2안</td><td>"3년 vs 8년" + 두 갈래 도식 그래픽</td><td>시각적 비교 강렬</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="plan-card full" style="margin-top:20px;">
+    <div class="card-label">🔖 해시태그 &amp; SEO 설명</div>
+    <p style="margin-top:8px;font-size:15px;line-height:2.2;color:#444;">
+      <strong>#개인회생 #신용회복위원회 #워크아웃 #개인워크아웃 #채무조정 #빚탕감 #개인회생vs워크아웃 #부산개인회생 #개인회생파산 #채무탈출</strong>
+    </p>
+    <p style="margin-top:10px;font-size:14px;color:var(--muted);">
+      📝 영상 설명란: 개인회생과 신용회복위원회 워크아웃의 실제 차이를 비교합니다. 탕감 구조, 기간, 월납 차이, 내 상황 기준 결정법까지 — 리얼로펌 이창희 변호사가 직접 설명합니다. 무료 상담: [링크]
+    </p>
+  </div>
+
+  <div class="code-block">
+<span class="hc">&lt;!-- 리얼로펌 디지털허브 게시용 HTML (10편) --&gt;</span>
+<span class="ht">&lt;article</span> <span class="ha">class</span>=<span class="hv">"reallawfirm-post ep10"</span><span class="ht">&gt;</span>
+
+  <span class="ht">&lt;h1&gt;</span>개인회생 vs 신용회복(워크아웃) — 실제 결과로 비교합니다<span class="ht">&lt;/h1&gt;</span>
+
+  <span class="ht">&lt;section&gt;</span>
+    <span class="ht">&lt;h2&gt;</span>핵심 구조 차이<span class="ht">&lt;/h2&gt;</span>
+    <span class="ht">&lt;ul&gt;</span>
+      <span class="ht">&lt;li&gt;</span>개인회생 = 일부만 갚고 나머지 법원 면책 (탕감)<span class="ht">&lt;/li&gt;</span>
+      <span class="ht">&lt;li&gt;</span>워크아웃 = 전액 갚되 8~10년으로 기간 연장<span class="ht">&lt;/li&gt;</span>
+    <span class="ht">&lt;/ul&gt;</span>
+  <span class="ht">&lt;/section&gt;</span>
+
+  <span class="ht">&lt;section&gt;</span>
+    <span class="ht">&lt;h2&gt;</span>워크아웃이 더 유리한 경우<span class="ht">&lt;/h2&gt;</span>
+    <span class="ht">&lt;ul&gt;</span>
+      <span class="ht">&lt;li&gt;</span>소득이 높고 탕감 금액이 크지 않은 경우<span class="ht">&lt;/li&gt;</span>
+      <span class="ht">&lt;li&gt;</span>배우자 재산이 많은 경우<span class="ht">&lt;/li&gt;</span>
+      <span class="ht">&lt;li&gt;</span>월 생활비가 절대적으로 중요한 경우<span class="ht">&lt;/li&gt;</span>
+    <span class="ht">&lt;/ul&gt;</span>
+  <span class="ht">&lt;/section&gt;</span>
+
+  <span class="ht">&lt;section&gt;</span>
+    <span class="ht">&lt;h2&gt;</span>결론: 내 상황이 기준입니다<span class="ht">&lt;/h2&gt;</span>
+    <span class="ht">&lt;p&gt;</span>타이밍을 놓치면 선택지가 줄어듭니다. 리얼로펌에서 함께 계산해 드립니다.<span class="ht">&lt;/p&gt;</span>
+  <span class="ht">&lt;/section&gt;</span>
+
+<span class="ht">&lt;/article&gt;</span>
+  </div>
+</div>
+
+<script>
+function showTab(name, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  btn.classList.add('active');
+  if (name === 'script') { init(); }
+}
+
+let cur = 0;
+const slides = [];
+const parts = [];
+
+function init() {
+  document.querySelectorAll('.slide').forEach((s, i) => {
+    slides[i] = s;
+    parts[i] = s.dataset.part || '';
+  });
+  buildDots();
+  goTo(0);
+}
+
+function buildDots() {
+  const c = document.getElementById('dot-container');
+  c.innerHTML = '';
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'sc-dot';
+    d.onclick = () => goTo(i);
+    c.appendChild(d);
+  });
+}
+
+function goTo(n) {
+  slides.forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.sc-dot').forEach(d => d.classList.remove('active'));
+  slides[n].classList.add('active');
+  document.querySelectorAll('.sc-dot')[n].classList.add('active');
+  document.getElementById('cur-num').textContent = n + 1;
+  document.getElementById('cur-part').textContent = parts[n];
+  document.getElementById('btn-prev').disabled = (n === 0);
+  document.getElementById('btn-next').disabled = (n === slides.length - 1);
+  cur = n;
+}
+
+function moveSlide(dir) {
+  const next = cur + dir;
+  if (next >= 0 && next < slides.length) goTo(next);
+}
+
+document.addEventListener('keydown', e => {
+  if (document.getElementById('section-script').classList.contains('active')) {
+    if (e.key === 'ArrowRight') moveSlide(1);
+    if (e.key === 'ArrowLeft') moveSlide(-1);
+  }
+});
+
+window.onload = init;
+</script>
+</body>
+</html>
